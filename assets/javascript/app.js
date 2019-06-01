@@ -6,7 +6,7 @@ var animals = ["dog", "cat", "rabbit", "hamster", "skunk", "goldfish", "bird", "
 function displayAnimalPictures() {
 
     var animal = $(this).attr("data-title")
-    var queryurl = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=PGW1rqdDDHEHBrXcBhwAuPg7Nnivp0UZ&limit=10&"
+    var queryurl = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=PGW1rqdDDHEHBrXcBhwAuPg7Nnivp0UZ&limit=10&"
 
     //creating an ajax call for the specific animal being clicked 
     $.ajax({
@@ -38,8 +38,8 @@ function displayAnimalPictures() {
             var imageURL = response.data[i].images.fixed_height_still.url;
 
             //making sure everything works
-            //console.log(gifURL);
-            console.log(response.data[i].images.fixed_height.url);
+            console.log(gifURL);
+            
 
             //creating element to hold the image
             // var image = $("<img>").attr("src", imageURL);
