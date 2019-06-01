@@ -31,25 +31,39 @@ function displayAnimalPictures() {
         var pRating = $("<p>").text("Rating: " + rating);
 
         animalDiv.append(pRating);
+        // retrieving url for gif
+        var gifURL = response.data[i].images.fixed_height.url;
 
         //retrieving the url for the image
-        var imageURL = response.data[i].images.fixed_width_still.url;
-        
-        console.log(imageURL)
+        var imageURL = response.data[i].images.fixed_height_still.url;
+
+        //making sure everything works
+        console.log(gifURL);
+        console.log(imageURL);
+
         //creating element to hold the image
         var image = $("<img>").attr("src", imageURL);
+        var gif = $("<img>").attr("src", gifURL);
+        
 
         animalDiv.append(image);
 
         $("#animal").prepend(animalDiv)
-    
-        }
-         //function to make pictures into a gif when clicked on
-    $(".pictures").on("click", function(gif){
-        var gifURL = response.data[i].images.downsized_medium.url
+    }
 
-        var gif = $("<img>").attr("src", gifURL);
+         //function to make pictures into a gif when clicked on
+    $(".pictures").mousedown( function(gifImg){
+        console.log("working");
+        
+
+
+        image.replaceWith(gif);
+
+      
     })
+    
+        
+     
     });
 }
 

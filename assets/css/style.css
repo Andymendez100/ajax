@@ -1,8 +1,9 @@
+/* Changing body color*/
 body{
     background-color:#DFE1E1;
 }
 
-
+/* Buttons*/
 .animal{
    background-color: #5DB6BB;
    color:white;
@@ -12,12 +13,13 @@ body{
    padding: 5px;
    
 }
-
+/* Form */
 #animalForm{
     position: absolute;
     left: 70%;
     font-size: 25px;
 }
+    /* Submit button*/
 #addAnimal{
     background-color: #5DB6BB;
     color: white;
@@ -25,15 +27,19 @@ body{
     margin-top: 10px;
     padding: 5px;
 }
+/* Text input on form*/
 #animalInput{
     height: 30px;
     font-size: 30px;
 }
+/* Div containor holding the pictures*/
 #animal{
     display: flex;
-   
+   width:70%;
+   flex-wrap: wrap;
 
 }
+/* Pictures being brought*/
 .pictures{
     margin-right: 20px;
 }
