@@ -1,0 +1,39 @@
+body{
+    background-color:#DFE1E1;
+}
+
+
+.animal{
+   background-color: #5DB6BB;
+   color:white;
+   margin-right: 0.5%;
+   margin-bottom: 20px;
+   font-size: 25px;
+   padding: 5px;
+   
+}
+
+#animalForm{
+    position: absolute;
+    left: 70%;
+    font-size: 25px;
+}
+#addAnimal{
+    background-color: #5DB6BB;
+    color: white;
+    font-size: 25px;
+    margin-top: 10px;
+    padding: 5px;
+}
+#animalInput{
+    height: 30px;
+    font-size: 30px;
+}
+#animal{
+    display: flex;
+   
+
+}
+.pictures{
+    margin-right: 20px;
+}
