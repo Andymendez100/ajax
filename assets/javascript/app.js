@@ -19,103 +19,115 @@ function displayAnimalPictures() {
         $(".pictures").empty()
 
         for (var i = 0; i < response.data.length; i++) {
+
+            // creating a div to hold the pictures
+            var animalDiv = $("<div class='pictures'>");
+
+            //Storing the rating data
+            var rating = response.data[i].rating;
+
+
+            //creating element to have rating displayed
+            var pRating = $("<p>").text("Rating: " + rating);
+
+            animalDiv.append(pRating);
+            // retrieving url for gif
+            var gifURL = response.data[i].images.fixed_height.url;
+
+            //retrieving the url for the image
+            var imageURL = response.data[i].images.fixed_height_still.url;
+
+            //making sure everything works
+            //console.log(gifURL);
+            console.log(response.data[i].images.fixed_height.url);
+
+            //creating element to hold the image
+            // var image = $("<img>").attr("src", imageURL);
+            var image = $("<img>");
+            image.attr("src", imageURL);
+
+            image.attr("data-alt", gifURL);
+            var gif = $("<img>").attr("src", gifURL);
+            image.attr("data-start", imageURL);
+
+            animalDiv.append(image);
+
+            $("#animal").prepend(animalDiv)
+
+            console.log(image);
             
-        // creating a div to hold the pictures
-        var animalDiv = $("<div class='pictures'>");
 
-        //Storing the rating data
-        var rating = response.data[i].rating;
+        }
+        //function to make pictures into a gif when clicked on
+        $("img").mousedown(function () {
+            console.log("working");
 
-        
-        //creating element to have rating displayed
-        var pRating = $("<p>").text("Rating: " + rating);
+            var newUrl = $(this).attr("data-start")
 
-        animalDiv.append(pRating);
-        // retrieving url for gif
-        var gifURL = response.data[i].images.fixed_height.url;
+            if ($(this).attr("src") === $(this).attr("data-alt")) {
+                $(this).attr('src', newUrl)
+            }
+            else{
+                $(this).attr("src", $(this).attr("data-alt"));
+            }
 
-        //retrieving the url for the image
-        var imageURL = response.data[i].images.fixed_height_still.url;
-
-        //making sure everything works
-        console.log(gifURL);
-        console.log(imageURL);
-
-        //creating element to hold the image
-        var image = $("<img>").attr("src", imageURL);
-        var gif = $("<img>").attr("src", gifURL);
-        
-
-        animalDiv.append(image);
-
-        $("#animal").prepend(animalDiv)
-    }
-
-         //function to make pictures into a gif when clicked on
-    $(".pictures").mousedown( function(gifImg){
-        console.log("working");
-        
+        })
 
 
-        image.replaceWith(gif);
 
-      
-    })
-    
-        
-     
+
     });
 }
 
-    // function for displaying buttons
+// function for displaying buttons
 
-    function renderButtons() {
+function renderButtons() {
 
-        //Clear animals before adding more so we don't have repeating buttons
-        $("#animalButtons").empty();
+    //Clear animals before adding more so we don't have repeating buttons
+    $("#animalButtons").empty();
 
-        //for loop
-        for (var j = 0; j < animals.length; j++) {
+    //for loop
+    for (var j = 0; j < animals.length; j++) {
 
-            //Creating buttons
-            var a= $("<button>");
+        //Creating buttons
+        var a = $("<button>");
 
-            //adding class of animal to button
-            a.addClass("animal");
+        //adding class of animal to button
+        a.addClass("animal");
 
-            // Data attr added
-            a.attr("data-title", animals[j]);
+        // Data attr added
+        a.attr("data-title", animals[j]);
 
-            //Provided inital button text
-            a.text(animals[j]);
+        //Provided inital button text
+        a.text(animals[j]);
 
-            // added the button to the button div
-            $("#animalButtons").append(a);
+        // added the button to the button div
+        $("#animalButtons").append(a);
 
 
-        }
     }
-    //function to grab input from textbox and add it to a button
-    $("#addAnimal").on("click",function(event){
-        //Stop the button from actally submitting
-        event.preventDefault()
+}
+//function to grab input from textbox and add it to a button
+$("#addAnimal").on("click", function (event) {
+    //Stop the button from actally submitting
+    event.preventDefault()
 
-        //grab input from textbox
-        var animal = $("#animalInput").val().trim();
+    //grab input from textbox
+    var animal = $("#animalInput").val().trim();
 
-        //the animal from the textbox will be added to our array
-        animals.push(animal);
+    //the animal from the textbox will be added to our array
+    animals.push(animal);
 
-        //calling the function to render the button
-        renderButtons();
-    });
-
-   
-
-    //adding click event listerns to all element with a class of animal
-    $(document).on("click", ".animal", displayAnimalPictures);
-
-    //calling render buttons function to display inital buttons
+    //calling the function to render the button
     renderButtons();
+});
+
+
+
+//adding click event listerns to all element with a class of animal
+$(document).on("click", ".animal", displayAnimalPictures);
+
+//calling render buttons function to display inital buttons
+renderButtons();
 
 
