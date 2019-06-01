@@ -8,6 +8,9 @@ function displayAnimalPictures() {
     var animal = $(this).attr("data-title")
     var queryurl = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=PGW1rqdDDHEHBrXcBhwAuPg7Nnivp0UZ&limit=10&"
 
+    console.log(queryurl);
+    
+
     //creating an ajax call for the specific animal being clicked 
     $.ajax({
         url: queryurl,
